@@ -5,15 +5,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    
+    flex: auto;
   }
   
   .tweet {
-   max-width: 300px;
-    float: left;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
+   max-width: 300px; 
+    flex: auto;
   }
   .our-team {
     padding: 30px 0 40px;

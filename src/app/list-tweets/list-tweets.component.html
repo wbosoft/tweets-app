@@ -4,7 +4,7 @@
         <button type="submit" (click) = "search()" > Chercher</button>		
    </div> 
   <div *ngFor="let item of tweets"  class="row">
-        <div class="tweet" style="width: 20%" (click)="navigate(item.id)">
+        <div class="tweet"  (click)="navigate(item.id)">
              <div class="our-team">
                     <div class="picture">
                         <img class="img-fluid" src="{{item.url}}">
