@@ -1,10 +1,6 @@
 
 .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
+    display: block;
   }
   
   .tweet {
@@ -35,4 +31,28 @@
     text-transform: capitalize;
   }
   
+
+  .back button {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+      -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 3%;
+   }
   
+  .back button:hover {
+    background: #0b7dda;
+  }
+  
+  .back::after {
+    content: "";
+    clear: both;
+    display: table;
+  }   

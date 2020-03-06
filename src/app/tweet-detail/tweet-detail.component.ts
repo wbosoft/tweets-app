@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 import { Tweet } from '../models/tweet';
 import { ApiService } from '../services/api.service';
 @Component({
@@ -11,7 +12,7 @@ export class TweetDetailComponent implements OnInit {
 id: number;
   data: any;
   constructor( public activatedRoute: ActivatedRoute,
-    public router: Router, public  api: ApiService) {
+    public router: Router, public  api: ApiService,private _location: Location) {
           this.data = [];
      }
 
@@ -22,5 +23,8 @@ id: number;
       this.data = response.data ; 
     })
     console.log(this.id);
+  }
+  back(){
+    this._location.back();
   }
 }
