@@ -1,27 +1,25 @@
-import { Injectable } from '@angular/core'; 
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Tweet} from '../models/tweet';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({
-  providedIn : 'root'
+  providedIn: 'root'
 })
 export class ApiService {
-base_path= 'http://localhost:8080/';
-
-  constructor(private http :HttpClient) {
- 
-   }
-
+  base_path = 'http://localhost:8080/';
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': "*"
+      'Content-Type': 'application/json'
     })
   }
-    // Handle API errors
+
+  constructor(private http: HttpClient) {
+
+  }
+
+  // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -39,16 +37,15 @@ base_path= 'http://localhost:8080/';
   };
 
 
-  search(hashtag):Observable<any> {
-    return this.http.get(this.base_path+"search/"+hashtag)
-    .pipe(
-      retry(2),
-      catchError(this.handleError)
-    )
+  search(hashtag): Observable<any> {
+    return this.http.get(this.base_path + "search/" + hashtag)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
   }
+
   getTweet(id): Observable<any> {
-    console
-    .log(this.base_path + "get/tweet/" + id)
     return this.http
       .get(this.base_path + "get/tweet/" + id)
       .pipe(

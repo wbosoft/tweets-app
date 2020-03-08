@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Tweet } from '../models/tweet';
-import { ApiService } from '../services/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from '../services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-tweets',
@@ -9,27 +8,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./list-tweets.component.css']
 })
 export class ListTweetsComponent implements OnInit {
-tweets : any; 
-hashtag : string;
-  constructor( public  api: ApiService,public router: Router) { 
-    this.tweets  = [] ;
+  tweets: any;
+  hashtag: string;
+
+  constructor(public  api: ApiService, public router: Router) {
+    this.tweets = [];
     this.hashtag = "";
   }
 
   ngOnInit() {
   }
-  navigate ( id){
+
+  navigate(id) {
     console.log(id);
-    this.router.navigateByUrl('/tweet/'+id);
+    this.router.navigateByUrl('/tweet/' + id);
   }
-  search(){
-    if(this.hashtag.length>0){
+
+  search() {
+    if (this.hashtag.length > 0) {
       this.api.search(this.hashtag).subscribe(response => {
-        console.log(response); 
-        this.tweets = response.data ; 
+        console.log(response);
+        this.tweets = response.data;
       })
     }
-    this.hashtag="";
+    this.hashtag = "";
   }
 
 }
