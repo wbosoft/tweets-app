@@ -19,11 +19,9 @@ id: number;
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params["id"];
     this.api.getTweet(this.id).subscribe(response => {
-      console.log(response.data);
       this.data = response.data ; 
     })
-    console.log(this.id);
-  }
+   }
   back(){
     this._location.back();
   }
